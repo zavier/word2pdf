@@ -13,7 +13,7 @@ public class PdfUtils {
     public static void word2pdf(String wordPath, String pdfPath) {
         try {
             // 无license会有水印
-            getLicense();
+            initLicense();
 
             final File file = new File(pdfPath);
             try (final FileOutputStream os = new FileOutputStream(file);) {
@@ -25,7 +25,7 @@ public class PdfUtils {
         }
     }
 
-    private static void getLicense() throws Exception {
+    private static void initLicense() throws Exception {
         final InputStream resourceAsStream = PdfUtils.class.getClassLoader().getResourceAsStream("aspose/license.xml");
         final License license = new License();
         license.setLicense(resourceAsStream);
